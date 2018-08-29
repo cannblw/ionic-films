@@ -19,6 +19,7 @@ export class ListPage {
   page: number = 1;
   totalPages: number;
   isLoading: boolean = false;
+  hasReachedListEnd: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -37,13 +38,13 @@ export class ListPage {
 
     this.filmProvider.getTopFilms(page)
       .subscribe(films => {
-        this.films = this.films.concat(films.results);
+        this.films = this.films.concat(films.results as Film[]);
         this.isLoading = false;
       });
   }
 
-  getTotalPages(): number {
-    return this.filmProvider.getTopFilms()
+  getTotalPages(): void {
+    this.filmProvider.getTopFilms()
       .subscribe(films => {
         this.totalPages = films.total_pages;
       });
@@ -59,7 +60,7 @@ export class ListPage {
     this.navCtrl.push(SearchPage);
   }
 
-  loadMore(infiniteScroll) {
+  loadMore(infiniteScroll): void {
     // If is loading or has loaded all results
     if (this.isLoading || this.hasReachedListEnd) {
       infiniteScroll.complete();
