@@ -13,7 +13,7 @@ import { IMG_BASE } from '../../../config';
 })
 export class DetailPage {
   film: Film;
-  const imgUri: string;
+  imgUri: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.film = this.navParams.get('film');

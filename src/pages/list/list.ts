@@ -5,6 +5,7 @@ import { Film } from '../../models/Film';
 import { FilmProvider } from '../../providers/film/film';
 
 import { DetailPage } from '../detail/detail';
+import { SearchPage } from '../search/search';
 
 @Component({
   selector: 'page-list',
@@ -49,10 +50,13 @@ export class ListPage {
   }
 
   itemTapped(event, film): void {
-    // That's right, we're pushing to ourselves!
     this.navCtrl.push(DetailPage, {
       film: film
     });
+  }
+
+  searchClicked(): void {
+    this.navCtrl.push(SearchPage);
   }
 
   loadMore(infiniteScroll) {

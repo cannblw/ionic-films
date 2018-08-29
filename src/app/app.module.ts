@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ListPage } from '../pages/list/list';
 import { DetailPage } from '../pages/detail/detail';
+import { SearchPage } from '../pages/search/search';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,7 +17,8 @@ import { FilmProvider } from '../providers/film/film';
   declarations: [
     MyApp,
     ListPage,
-    DetailPage
+    DetailPage,
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { FilmProvider } from '../providers/film/film';
   entryComponents: [
     MyApp,
     ListPage,
-    DetailPage
+    DetailPage,
+    SearchPage
   ],
   providers: [
     StatusBar,
