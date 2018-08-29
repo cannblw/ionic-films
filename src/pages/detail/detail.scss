@@ -15,10 +15,6 @@ ul {
     font-size: 12pt;
 }
 
-#left-col {
-
-}
-
 #poster {
   height: 50vh;
   max-width: 100%;
@@ -43,5 +39,6 @@ ul {
 }
 
 .rounded-border {
-
+    border: 1px solid grey;
+    border-radius: 5px;
 }
