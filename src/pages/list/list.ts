@@ -12,14 +12,24 @@ import { SearchPage } from '../search/search';
   templateUrl: 'list.html'
 })
 export class ListPage {
-  // Variables sobre las películas
+  // Inicializa un array de tamaño variable para guardar las películas.
   films: Film[] = [];
+
+  // Inicializa el número de página actual a 1.
   page: number = 1;
+
+  // Inicializa una variable que contendrá el número total de páginas disponibles
+  // en el momento de la construcción de la clase.
   totalPages: number;
 
-  // Variables de estado
+  // Inicializa un boolean que será true si la lista está cargando elementos
+  // para bloquear dicha acción hasta que la anterior termine.
   isLoading: boolean = false;
+
+  // Inicializa un boolean que determinará si se ha alcanzado el final de la lista.
   hasReachedListEnd: boolean = false;
+
+  // Inicializa un boolean que será true si existe un error en las llamadas a la API.
   hasNetworkError: boolean = false;
 
   /*
@@ -58,7 +68,7 @@ export class ListPage {
         this.films = this.films.concat(films.results as Film[]);
         this.isLoading = false;
       },
-      _ => { // Maneja el error de una forma genérica
+      _ => {
         this.hasNetworkError = true;
       });
   }
@@ -74,7 +84,7 @@ export class ListPage {
       .subscribe(films => {
         this.totalPages = films.total_pages;
       },
-      _ => { // Maneja el error de una forma genérica
+      _ => {
         this.hasNetworkError = true;
       });
   }
@@ -98,8 +108,8 @@ export class ListPage {
   }
 
   /*
-   * Carga la siguiente página de películas realizando una llamada
-   * a la api.
+   * Carga la siguiente página de películas una vez se ha alcanzado el final
+   * de la página actual.
    */
   loadMore(infiniteScroll): void {
     // Si está cargando o se ha alcanzado la última página, no hacer nada.

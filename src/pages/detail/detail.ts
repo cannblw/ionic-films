@@ -12,14 +12,17 @@ import { IMG_BASE } from '../../../config';
   templateUrl: 'detail.html',
 })
 export class DetailPage {
+  // Inicializa una variable que contendrá la película actual.
   film: Film;
+
+  // Inicializa una string que contendrá la URI completa al poster de la película.
   imgUri: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // Obtiene la película seleccionada para poder hacer un binding desde la vista.
     this.film = this.navParams.get('film');
 
-    // Obtiene la uri completa del póster de la película
+    // Obtiene la URI completa del póster de la película
     this.imgUri = IMG_BASE + this.film.poster_path;
   }
 }

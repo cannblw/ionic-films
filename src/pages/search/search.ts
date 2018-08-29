@@ -13,11 +13,13 @@ import { DetailPage } from '../detail/detail';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-  // Variable sobre las películas
+  // Inicializa un array de tamaño variable para guardar las películas.
   films: Film[] = [];
 
-  // Variables de estado
+  // Inicializa una string que tendrá un binding bidireccional con la vista.
   searchTerm: string = '';
+
+  // Inicializa un boolean que será true si existe un error en las llamadas a la API.
   hasNetworkError: boolean = false;
 
   /*
@@ -60,7 +62,7 @@ export class SearchPage {
         .subscribe(films => {
           this.films = films.results;
         },
-        _ => { // Maneja el error de una forma genérica
+        _ => {
           this.hasNetworkError = true;
         });
     }
