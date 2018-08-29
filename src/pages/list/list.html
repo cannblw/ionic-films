@@ -1,37 +1,39 @@
 <ion-header>
   <ion-navbar>
+
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+
     <ion-title>Top Films</ion-title>
 
     <ion-buttons end>
       <button ion-button end icon-only (click)="searchClicked()">
-          <ion-icon name="search"></ion-icon>
+        <ion-icon name="search"></ion-icon>
       </button>
-   </ion-buttons>
+    </ion-buttons>
 
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
-    <div *ngIf="!hasNetworkError; else networkError">
-      <ion-list>
-        <button ion-item *ngFor="let film of films" (click)="itemTapped($event, film)">
-          {{film.title}}
-        </button>
-      </ion-list>
+  <div *ngIf="!hasNetworkError; else networkError">
+    <ion-list>
+      <button ion-item *ngFor="let film of films" (click)="itemTapped($event, film)">
+        {{film.title}}
+      </button>
+    </ion-list>
 
-      <ion-infinite-scroll (ionInfinite)="loadMore($event)">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+  <ng-template #networkError>
+    <div class="error">
+      <b>Error:</b> Network error.
     </div>
-
-    <ng-template #networkError>
-      <div class="error">
-        <b>Error:</b> Network error.
-      </div>
-    </ng-template>
+  </ng-template>
 
 </ion-content>

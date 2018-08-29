@@ -1,11 +1,4 @@
 
-ul {
-  margin: 0;
-  padding: 8px;
-  list-style-position: inside;
-  list-style-type: none;
-}
-
 #container {
   display: flex;
   padding: 8px;
@@ -41,4 +34,11 @@ ul {
 .rounded-border {
     border: 1px solid grey;
     border-radius: 5px;
+}
+
+ul {
+  margin: 0;
+  padding: 8px;
+  list-style-position: inside;
+  list-style-type: none;
 }
