@@ -1,6 +1,8 @@
 {
   "name": "ionic-films",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "app_id": ""
 }

@@ -26,9 +26,11 @@
   padding-left: 32px;
 }
 
-#right-col > p {
+#right-col {
+  & > p {
     text-align: justify;
     text-justify: inter-word;
+  }
 }
 
 .rounded-border {
