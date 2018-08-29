@@ -16,7 +16,10 @@ export class DetailPage {
   imgUri: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // Obtiene la película seleccionada para poder hacer un binding desde la vista.
     this.film = this.navParams.get('film');
+
+    // Obtiene la uri completa del póster de la película
     this.imgUri = IMG_BASE + this.film.poster_path;
   }
 }
