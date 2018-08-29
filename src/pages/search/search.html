@@ -1,21 +1,24 @@
-<!--
-  Generated template for the SearchPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
     <ion-title>Search</ion-title>
   </ion-navbar>
 
-  <ion-searchbar>
-</ion-searchbar>
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    (ionInput)="onInput()">
+  </ion-searchbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-list>
+    <button ion-item *ngFor="let film of films" (click)="itemTapped($event, film)">
+      {{film.title}}
+    </button>
+  </ion-list>
 
 </ion-content>

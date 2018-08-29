@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { of } from 'rxjs/observable/of'
 
 import { API_BASE, API_KEY } from '../../../config.js'
 
@@ -8,12 +9,23 @@ import { API_BASE, API_KEY } from '../../../config.js'
 export class FilmProvider {
   constructor(public http: HttpClient) { }
 
-  getTopFilms(page: number = 1): Observable<Object> {
+  getTopFilms(page: number = 1): Observable<any> {
     const endPoint = '/discover/movie';
     const params = new HttpParams()
       .set('api_key', API_KEY)
       .set('sort_by', 'popularity.desc')
       .set('page', String(page));
+
+    return this.http.get(API_BASE + endPoint, { params: params });
+  }
+
+  search(term: string): Observable<any> {
+    if(term == '') return of([]);
+
+    const endPoint = '/search/movie';
+    const params = new HttpParams()
+      .set('api_key', API_KEY)
+      .set('query', term);
 
     return this.http.get(API_BASE + endPoint, { params: params });
   }

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the SearchPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Film } from '../../models/Film';
+import { FilmProvider } from '../../providers/film/film';
+
+import { DetailPage } from '../detail/detail';
+
 
 @IonicPage()
 @Component({
@@ -14,12 +13,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'search.html',
 })
 export class SearchPage {
+  searchTerm: string = '';
+  films: Film[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private filmProvider: FilmProvider) { }
+
+  itemTapped(event, film): void {
+    this.navCtrl.push(DetailPage, {
+      film: film
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
+  onInput(): void {
+    if(this.searchTerm == '') {
+      this.films = [];
+    } else {
+      this.filmProvider.search(this.searchTerm)
+        .subscribe(films => {
+          this.films = films.results;
+        });
+    }
+    console.log(this.films);
   }
-
 }
