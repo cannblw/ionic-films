@@ -12,9 +12,6 @@ import { SearchPage } from '../search/search';
   templateUrl: 'list.html'
 })
 export class ListPage {
-  selectedItem: any;
-  items: Array<{title: string, note: string, icon: string}>;
-
   films: Film[] = [];
   page: number = 1;
   totalPages: number;
