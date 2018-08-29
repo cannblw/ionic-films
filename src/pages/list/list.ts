@@ -18,8 +18,10 @@ export class ListPage {
   films: Film[] = [];
   page: number = 1;
   totalPages: number;
+
   isLoading: boolean = false;
   hasReachedListEnd: boolean = false;
+  hasNetworkError: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -35,18 +37,27 @@ export class ListPage {
 
   getFilms(page = 1): void {
     this.isLoading = true;
+    this.hasNetworkError = false;
 
     this.filmProvider.getTopFilms(page)
       .subscribe(films => {
         this.films = this.films.concat(films.results as Film[]);
         this.isLoading = false;
+      },
+      _ => {
+        this.hasNetworkError = true;
       });
   }
 
   getTotalPages(): void {
+    this.hasNetworkError = false;
+
     this.filmProvider.getTopFilms()
       .subscribe(films => {
         this.totalPages = films.total_pages;
+      },
+      _ => {
+        this.hasNetworkError = true;
       });
   }
 

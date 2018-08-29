@@ -16,14 +16,22 @@
 
 <ion-content>
 
-    <ion-list>
-      <button ion-item *ngFor="let film of films" (click)="itemTapped($event, film)">
-        {{film.title}}
-      </button>
-    </ion-list>
+    <div *ngIf="!hasNetworkError; else networkError">
+      <ion-list>
+        <button ion-item *ngFor="let film of films" (click)="itemTapped($event, film)">
+          {{film.title}}
+        </button>
+      </ion-list>
 
-    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+      <ion-infinite-scroll (ionInfinite)="loadMore($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+      </ion-infinite-scroll>
+    </div>
+
+    <ng-template #networkError>
+      <div class="error">
+        <b>Error:</b> Network error.
+      </div>
+    </ng-template>
 
 </ion-content>

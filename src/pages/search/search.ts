@@ -16,6 +16,8 @@ export class SearchPage {
   searchTerm: string = '';
   films: Film[] = [];
 
+  hasNetworkError: boolean = false;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,14 +30,18 @@ export class SearchPage {
   }
 
   onInput(): void {
+    this.hasNetworkError = false;
+
     if(this.searchTerm == '') {
       this.films = [];
     } else {
       this.filmProvider.search(this.searchTerm)
         .subscribe(films => {
           this.films = films.results;
+        },
+        _ => {
+          this.hasNetworkError = true;
         });
     }
-    console.log(this.films);
   }
 }
