@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ListPage } from '../pages/list/list';
+import { DetailPage } from '../pages/detail/detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,7 +15,8 @@ import { FilmProvider } from '../providers/film/film';
 @NgModule({
   declarations: [
     MyApp,
-    ListPage
+    ListPage,
+    DetailPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { FilmProvider } from '../providers/film/film';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ListPage
+    ListPage,
+    DetailPage
   ],
   providers: [
     StatusBar,

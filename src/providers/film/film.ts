@@ -17,8 +17,6 @@ export class FilmProvider {
       .set('sort_by', 'popularity.desc')
       .set('page', page);
 
-    console.log('Calling', API_BASE + endPoint, 'for page', page);
-
     return this.http.get<Film[]>(API_BASE + endPoint, {params: params});
   }
 }

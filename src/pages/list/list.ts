@@ -4,6 +4,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Film } from '../../models/Film';
 import { FilmProvider } from '../../providers/film/film';
 
+import { DetailPage } from '../detail/detail';
+
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -27,14 +29,6 @@ export class ListPage {
 
     // Get total pages
     this.getTotalPages();
-
-    this.items = [];
-    for (let i=1; i<11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-      });
-    }
   }
 
   getFilms(page = 1): void {
@@ -54,10 +48,10 @@ export class ListPage {
       });
   }
 
-  itemTapped(event, item): void {
+  itemTapped(event, film): void {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
+    this.navCtrl.push(DetailPage, {
+      film: film
     });
   }
 
@@ -72,7 +66,6 @@ export class ListPage {
 
     // Reached end of list
     if (nextPage > this.totalPages) {
-      console.log('END REACHED')
       this.hasReachedListEnd = true;
       infiniteScroll.enable(false);
       return;

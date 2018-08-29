@@ -1,0 +1,35 @@
+
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ film.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <div id="container">
+    <div id="left-col">
+      <div id="poster-container">
+        <img id="poster" src="{{ imgUri }}" />
+      </div>
+
+      <div class="rounded-border">
+        <ul>
+          <li><strong class="detail-identifier">Title:</strong> {{ film.title }}</li>
+          <li><strong class="detail-identifier">Original title:</strong> {{ film.original_title }}</li>
+          <li><strong class="detail-identifier">Original language:</strong> {{ film.original_language }}</li>
+          <li><strong class="detail-identifier">Release date:</strong> {{ film.release_date }}</li>
+          <li><strong class="detail-identifier">Popularity:</strong> {{ film.popularity }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="right-col">
+      <h1>Overview:</h1>
+      <p>{{ film.overview }}</p>
+    </div>
+  </div>
+
+</ion-content>
