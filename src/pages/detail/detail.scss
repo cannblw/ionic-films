@@ -2,6 +2,12 @@ $dark-grey: #222222;
 $medium-grey: rgba(53, 53, 53, 0.5);
 $border-radius: 6px;
 
+#detailView {
+  
+}
+/*
+ * Reinicia las propiedades por defecto
+ */
 h2 {
   padding: 0;
 }
@@ -11,6 +17,20 @@ p {
   margin: 0;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+  list-style-type: none;
+}
+
+/*
+ * Estilos para la vista de detalle
+ */
+.dark-grey {
+  color: $dark-grey;
+}
+
 .data-container {
   margin-top: 0;
   padding: 1rem;
@@ -18,24 +38,6 @@ p {
   border-radius: $border-radius;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}
-
-#poster-container {
-  width: 60%;
-  margin: 1rem auto 2rem;
-}
-
-#poster {
-  border-radius: $border-radius;
-}
-
-.justify {
-  text-align: justify;
-  text-justify: inter-word;
-}
-
-.dark-grey {
-  color: $dark-grey;
 }
 
 .heading-label {
@@ -50,9 +52,20 @@ p {
   border-bottom-right-radius: 0;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style-position: inside;
-  list-style-type: none;
+.justify {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+#poster {
+  display: block;
+  margin: 0 auto;
+  max-height: 50vh;
+  border-radius: $border-radius;
+}
+
+#poster-container {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
 }
