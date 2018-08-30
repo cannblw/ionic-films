@@ -9,25 +9,39 @@
 
 <ion-content padding>
 
-  <div id="container">
-    <div id="left-col">
-      <div id="poster-container">
-        <img id="poster" src="{{ imgUri }}" />
-      </div>
+  <div id="poster-container">
+    <img id="poster" [src]="posterUri" />
+  </div> 
 
-      <ul>
-        <li><strong class="detail-identifier">Title:</strong> {{ film.title }}</li>
-        <li><strong class="detail-identifier">Original title:</strong> {{ film.original_title }}</li>
-        <li><strong class="detail-identifier">Original language:</strong> {{ film.original_language }}</li>
-        <li><strong class="detail-identifier">Release date:</strong> {{ film.release_date }}</li>
-        <li><strong class="detail-identifier">Popularity:</strong> {{ film.popularity }}</li>
-      </ul>
-    </div>
+  <h2 class="heading-label">Overview:</h2>
+  <div class="data-container">
+    <p class="justify dark-grey">{{ film.overview }}</p>
+  </div>
 
-    <div id="right-col">
-      <h1>Overview:</h1>
-      <p>{{ film.overview }}</p>
-    </div>
+  <h2 class="heading-label">About the film:</h2>
+  <div class="data-container">
+    <ul>
+      <li>
+        <strong class="detail-identifier">Title: </strong>
+        <span class="dark-grey">{{ film.title }}</span>
+      </li>
+      <li>
+        <strong class="detail-identifier">Original title: </strong>
+        <span class="dark-grey">{{ film.original_title }}</span>
+      </li>
+      <li>
+        <strong class="detail-identifier">Original language: </strong>
+        <span class="dark-grey">{{ film.original_language }}</span>
+      </li>
+      <li>
+        <strong class="detail-identifier">Release date:</strong>
+        <span class="dark-grey">{{ film.release_date }}</span>
+      </li>
+      <li>
+        <strong class="detail-identifier">Popularity:</strong>
+        <span class="dark-grey">{{ film.popularity }}</span>
+      </li>
+    </ul>
   </div>
 
 </ion-content>
